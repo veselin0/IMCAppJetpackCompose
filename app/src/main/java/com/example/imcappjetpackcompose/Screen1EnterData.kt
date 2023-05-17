@@ -15,6 +15,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.RangeSlider
@@ -134,7 +137,7 @@ fun Screen1EnterData() {
                     mutableStateOf(100f) // pass the initial value
                 }
                 Text(text = "Height", fontSize = 24.sp, color = Color.White)
-                Text(text = "${ sliderValue.toInt() } cm", fontSize = 24.sp, color = Color.White)
+                Text(text = "${sliderValue.toInt()} cm", fontSize = 24.sp, color = Color.White)
 
 
                 Slider(
@@ -153,10 +156,43 @@ fun Screen1EnterData() {
             }
 
         }
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .padding(24.dp)
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                var weightValue by remember {
+                    mutableStateOf(70f) // pass the initial value
+                }
+                Text(text = "Weight", fontSize = 24.sp, color = Color.White)
+                Text(text = "${weightValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    //verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 8.dp)) {
+                        Icon(
+                            painter = painterResource(R.drawable.baseline_add_24),
+                            contentDescription = "Add sign"
+                        )
+                    }
+                    Button(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painter = painterResource(R.drawable.baseline_remove_24),
+                            contentDescription = "Subtract sign"
+                        )
+                    }
+                }
+            }
+        }
     }
-}
 
-@Composable
-fun MySpacer(size: Int) {
-    Spacer(modifier = Modifier.height(size.dp))
+    @Composable
+    fun MySpacer(size: Int) {
+        Spacer(modifier = Modifier.height(size.dp))
+    }
 }
