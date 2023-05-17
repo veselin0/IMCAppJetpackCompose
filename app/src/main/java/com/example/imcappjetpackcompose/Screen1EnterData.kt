@@ -151,44 +151,163 @@ fun Screen1EnterData() {
                     },
                     valueRange = 100f..250f
                 )
-
-
             }
-
         }
+
         Row(
             Modifier
                 .fillMaxWidth()
                 .padding(24.dp)
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                var weightValue by remember {
-                    mutableStateOf(70f) // pass the initial value
-                }
-                Text(text = "Weight", fontSize = 24.sp, color = Color.White)
-                Text(text = "${weightValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    horizontalArrangement = Arrangement.Center,
-                    //verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 8.dp)) {
-                        Icon(
-                            painter = painterResource(R.drawable.baseline_add_24),
-                            contentDescription = "Add sign"
-                        )
+            Box(
+                modifier = Modifier
+//                    .weight(1f)
+                    .width(155.dp)
+                    .height(155.dp)
+                    .padding(20.dp)
+                    .background(Color.LightGray, RoundedCornerShape(16.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    var weightValue by remember {
+                        mutableStateOf(70f) // pass the initial value
                     }
-                    Button(onClick = { /*TODO*/ }) {
-                        Icon(
-                            painter = painterResource(R.drawable.baseline_remove_24),
-                            contentDescription = "Subtract sign"
-                        )
+                    Text(text = "Weight", fontSize = 24.sp, color = Color.White)
+                    Text(text = "${weightValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        horizontalArrangement = Arrangement.Center,
+//                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Button(
+                            onClick = { /*TODO*/ },
+                            Modifier
+                                .weight(1f)
+                                .padding(end = 4.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.baseline_add_24),
+                                tint = Color.White,
+                                contentDescription = "Icon sign plus",
+                                modifier = Modifier
+                                    .width(60.dp)
+                                    .height(60.dp)
+                            )
+                        }
+                        Button(
+                            onClick = { /*TODO*/ },
+                            Modifier
+                                .weight(1f)
+                                .padding(start = 4.dp)
+                        ) {
+
+                        }
                     }
                 }
+//                    Icon(
+//                        painter = painterResource(R.drawable.baseline_male_24),
+//                        contentDescription = "male icon",
+//                        tint = Color.White,
+//                        modifier = Modifier
+//                            .width(60.dp)
+//                            .height(60.dp)
+//                    )
+//                    Text(text = "Hombre", color = Color.White)
             }
+
         }
+
+        Box(
+            modifier = Modifier
+//                    .weight(1f)
+                .width(155.dp)
+                .height(155.dp)
+                .padding(20.dp)
+                .background(backgroundColorFemale, RoundedCornerShape(16.dp))
+                .clickable {
+                    backgroundColorFemale =
+                        if (backgroundColorFemale == Color.LightGray && backgroundColorMale == Color.DarkGray) {
+                            Color.DarkGray
+                        } else {
+                            Color.LightGray
+                        }
+                    backgroundColorMale = if (backgroundColorMale == Color.LightGray) {
+                        Color.DarkGray
+                    } else {
+                        Color.LightGray
+                    }
+                }, contentAlignment = Alignment.Center
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(
+                    painter = painterResource(R.drawable.baseline_female_24),
+                    contentDescription = "female icon",
+                    tint = Color.White,
+                    modifier = Modifier
+                        .width(60.dp)
+                        .height(60.dp)
+                )
+                Text(text = "Mujer", color = Color.White)
+            }
+
+        }
+//            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+//                var weightValue by remember {
+//                    mutableStateOf(70f) // pass the initial value
+//                }
+//                Text(text = "Weight", fontSize = 24.sp, color = Color.White)
+//                Text(text = "${weightValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
+//                Row(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(8.dp),
+//                    horizontalArrangement = Arrangement.Center,
+//                    //verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 8.dp)) {
+//                        Icon(
+//                            painter = painterResource(R.drawable.baseline_add_24),
+//                            contentDescription = "Add sign"
+//                        )
+//                    }
+//                    Button(onClick = { /*TODO*/ }) {
+//                        Icon(
+//                            painter = painterResource(R.drawable.baseline_remove_24),
+//                            contentDescription = "Subtract sign"
+//                        )
+//                    }
+//                }
+//            }
+//            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+//                var weightValue by remember {
+//                    mutableStateOf(70f) // pass the initial value
+//                }
+//                Text(text = "Weight", fontSize = 24.sp, color = Color.White)
+//                Text(text = "${weightValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
+//                Row(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(8.dp),
+//                    horizontalArrangement = Arrangement.Center,
+//                    //verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 8.dp)) {
+//                        Icon(
+//                            painter = painterResource(R.drawable.baseline_add_24),
+//                            contentDescription = "Add sign"
+//                        )
+//                    }
+//                    Button(onClick = { /*TODO*/ }) {
+//                        Icon(
+//                            painter = painterResource(R.drawable.baseline_remove_24),
+//                            contentDescription = "Subtract sign"
+//                        )
+//                    }
+//                }
+//
+//            }
     }
 
     @Composable
