@@ -20,6 +20,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.RangeSlider
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
@@ -181,29 +183,18 @@ fun Screen1EnterData() {
                         horizontalArrangement = Arrangement.Center,
 //                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Button(
+                        RadioButton(
+                            selected = false,
                             onClick = { /*TODO*/ },
-                            Modifier
-                                .weight(1f)
-                                .padding(end = 4.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.baseline_add_24),
-                                tint = Color.White,
-                                contentDescription = "Icon sign plus",
-                                modifier = Modifier
-                                    .width(60.dp)
-                                    .height(60.dp)
-                            )
-                        }
-                        Button(
-                            onClick = { /*TODO*/ },
-                            Modifier
-                                .weight(1f)
-                                .padding(start = 4.dp)
-                        ) {
+                            enabled = false,
+                            colors = RadioButtonDefaults.colors(
+                                selectedColor = Color.Red,
+                                unselectedColor = Color.Yellow,
+//                                disabledColor = Color.Green
 
-                        }
+                            )
+                        )
+                        Icon(painter = painterResource(R.drawable.baseline_add_24), contentDescription = "Icon Plus")
                     }
                 }
 //                    Icon(
@@ -253,61 +244,7 @@ fun Screen1EnterData() {
             }
 
         }
-//            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-//                var weightValue by remember {
-//                    mutableStateOf(70f) // pass the initial value
-//                }
-//                Text(text = "Weight", fontSize = 24.sp, color = Color.White)
-//                Text(text = "${weightValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
-//                Row(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(8.dp),
-//                    horizontalArrangement = Arrangement.Center,
-//                    //verticalAlignment = Alignment.CenterVertically
-//                ) {
-//                    Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 8.dp)) {
-//                        Icon(
-//                            painter = painterResource(R.drawable.baseline_add_24),
-//                            contentDescription = "Add sign"
-//                        )
-//                    }
-//                    Button(onClick = { /*TODO*/ }) {
-//                        Icon(
-//                            painter = painterResource(R.drawable.baseline_remove_24),
-//                            contentDescription = "Subtract sign"
-//                        )
-//                    }
-//                }
-//            }
-//            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-//                var weightValue by remember {
-//                    mutableStateOf(70f) // pass the initial value
-//                }
-//                Text(text = "Weight", fontSize = 24.sp, color = Color.White)
-//                Text(text = "${weightValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
-//                Row(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(8.dp),
-//                    horizontalArrangement = Arrangement.Center,
-//                    //verticalAlignment = Alignment.CenterVertically
-//                ) {
-//                    Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 8.dp)) {
-//                        Icon(
-//                            painter = painterResource(R.drawable.baseline_add_24),
-//                            contentDescription = "Add sign"
-//                        )
-//                    }
-//                    Button(onClick = { /*TODO*/ }) {
-//                        Icon(
-//                            painter = painterResource(R.drawable.baseline_remove_24),
-//                            contentDescription = "Subtract sign"
-//                        )
-//                    }
-//                }
-//
-//            }
+
     }
 
     @Composable
