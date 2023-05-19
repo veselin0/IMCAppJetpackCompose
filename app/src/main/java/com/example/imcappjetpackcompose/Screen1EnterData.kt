@@ -1,7 +1,10 @@
 package com.example.imcappjetpackcompose
 
+import android.media.Image
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -31,8 +35,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,15 +62,15 @@ fun Screen1EnterData() {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(24.dp), horizontalArrangement = Arrangement.Center
+                .padding(16.dp), horizontalArrangement = Arrangement.Center
 
         ) {
             Box(
                 modifier = Modifier
 //                    .weight(1f)
-                    .width(155.dp)
-                    .height(155.dp)
-                    .padding(20.dp)
+                    .width(200.dp)
+                    .height(200.dp)
+                    .padding(8.dp)
                     .background(backgroundColorMale, RoundedCornerShape(16.dp))
                     .clickable {
                         backgroundColorMale =
@@ -96,9 +103,9 @@ fun Screen1EnterData() {
             Box(
                 modifier = Modifier
 //                    .weight(1f)
-                    .width(155.dp)
-                    .height(155.dp)
-                    .padding(20.dp)
+                    .width(200.dp)
+                    .height(200.dp)
+                    .padding(8.dp)
                     .background(backgroundColorFemale, RoundedCornerShape(16.dp))
                     .clickable {
                         backgroundColorFemale =
@@ -132,7 +139,7 @@ fun Screen1EnterData() {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(24.dp)
+                .padding(8.dp)
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 var sliderValue by remember {
@@ -163,10 +170,10 @@ fun Screen1EnterData() {
         ) {
             Box(
                 modifier = Modifier
-//                    .weight(1f)
-                    .width(155.dp)
-                    .height(155.dp)
-                    .padding(20.dp)
+                    .weight(1f)
+                    .width(200.dp)
+                    .height(200.dp)
+                    .padding(8.dp)
                     .background(Color.LightGray, RoundedCornerShape(16.dp)),
                 contentAlignment = Alignment.Center
             ) {
@@ -183,67 +190,50 @@ fun Screen1EnterData() {
                         horizontalArrangement = Arrangement.Center,
 //                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        RadioButton(
-                            selected = false,
-                            onClick = { /*TODO*/ },
-                            enabled = false,
-                            colors = RadioButtonDefaults.colors(
-                                selectedColor = Color.Red,
-                                unselectedColor = Color.Yellow,
-//                                disabledColor = Color.Green
-
+                        Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 4.dp)) {
+                            Image(
+                                painter = painterResource(id = R.drawable.baseline_add_24),
+                                contentDescription = "Icon",
+                                modifier = Modifier.size(24.dp)
                             )
-                        )
-                        Icon(painter = painterResource(R.drawable.baseline_add_24), contentDescription = "Icon Plus")
+                        }
+                        Button(onClick = { /*TODO*/ }) {
+                            Image(
+                                painter = painterResource(id = R.drawable.baseline_remove_24),
+                                contentDescription = "Icon",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
                     }
                 }
-//                    Icon(
-//                        painter = painterResource(R.drawable.baseline_male_24),
-//                        contentDescription = "male icon",
-//                        tint = Color.White,
-//                        modifier = Modifier
-//                            .width(60.dp)
-//                            .height(60.dp)
-//                    )
-//                    Text(text = "Hombre", color = Color.White)
+
+            }
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .width(200.dp)
+                    .height(200.dp)
+                    .padding(8.dp)
+                    .background(backgroundColorFemale, RoundedCornerShape(16.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Icon(
+                        painter = painterResource(R.drawable.baseline_female_24),
+                        contentDescription = "female icon",
+                        tint = Color.White,
+                        modifier = Modifier
+                            .width(60.dp)
+                            .height(60.dp)
+                    )
+                    Text(text = "Mujer", color = Color.White)
+                }
+
             }
 
         }
 
-        Box(
-            modifier = Modifier
-//                    .weight(1f)
-                .width(155.dp)
-                .height(155.dp)
-                .padding(20.dp)
-                .background(backgroundColorFemale, RoundedCornerShape(16.dp))
-                .clickable {
-                    backgroundColorFemale =
-                        if (backgroundColorFemale == Color.LightGray && backgroundColorMale == Color.DarkGray) {
-                            Color.DarkGray
-                        } else {
-                            Color.LightGray
-                        }
-                    backgroundColorMale = if (backgroundColorMale == Color.LightGray) {
-                        Color.DarkGray
-                    } else {
-                        Color.LightGray
-                    }
-                }, contentAlignment = Alignment.Center
-        ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Icon(
-                    painter = painterResource(R.drawable.baseline_female_24),
-                    contentDescription = "female icon",
-                    tint = Color.White,
-                    modifier = Modifier
-                        .width(60.dp)
-                        .height(60.dp)
-                )
-                Text(text = "Mujer", color = Color.White)
-            }
 
-        }
 
     }
 
