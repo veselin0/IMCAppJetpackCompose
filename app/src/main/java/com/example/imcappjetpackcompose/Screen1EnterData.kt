@@ -67,7 +67,7 @@ fun Screen1EnterData() {
         ) {
             Box(
                 modifier = Modifier
-//                    .weight(1f)
+                    .weight(1f)
                     .width(200.dp)
                     .height(200.dp)
                     .padding(8.dp)
@@ -102,7 +102,7 @@ fun Screen1EnterData() {
 
             Box(
                 modifier = Modifier
-//                    .weight(1f)
+                    .weight(1f)
                     .width(200.dp)
                     .height(200.dp)
                     .padding(8.dp)
@@ -190,14 +190,14 @@ fun Screen1EnterData() {
                         horizontalArrangement = Arrangement.Center,
 //                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(end = 4.dp)) {
+                        Button(onClick = { weightValue += 1 }, modifier = Modifier.padding(end = 4.dp)) {
                             Image(
                                 painter = painterResource(id = R.drawable.baseline_add_24),
                                 contentDescription = "Icon",
                                 modifier = Modifier.size(24.dp)
                             )
                         }
-                        Button(onClick = { /*TODO*/ }) {
+                        Button(onClick = { weightValue -= 1 }) {
                             Image(
                                 painter = painterResource(id = R.drawable.baseline_remove_24),
                                 contentDescription = "Icon",
@@ -208,34 +208,55 @@ fun Screen1EnterData() {
                 }
 
             }
+
             Box(
                 modifier = Modifier
                     .weight(1f)
                     .width(200.dp)
                     .height(200.dp)
                     .padding(8.dp)
-                    .background(backgroundColorFemale, RoundedCornerShape(16.dp)),
+                    .background(Color.LightGray, RoundedCornerShape(16.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Icon(
-                        painter = painterResource(R.drawable.baseline_female_24),
-                        contentDescription = "female icon",
-                        tint = Color.White,
+                    var ageValue by remember {
+                        mutableStateOf(50f) // pass the initial value
+                    }
+                    Text(text = "Age", fontSize = 24.sp, color = Color.White)
+                    Text(text = "${ageValue.toInt()} kg", fontSize = 24.sp, color = Color.White)
+                    Row(
                         modifier = Modifier
-                            .width(60.dp)
-                            .height(60.dp)
-                    )
-                    Text(text = "Mujer", color = Color.White)
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        horizontalArrangement = Arrangement.Center,
+//                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Button(onClick = { ageValue += 1 }, modifier = Modifier.padding(end = 4.dp)) {
+                            Image(
+                                painter = painterResource(id = R.drawable.baseline_add_24),
+                                contentDescription = "Icon",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                        Button(onClick = { ageValue -= 1 }) {
+                            Image(
+                                painter = painterResource(id = R.drawable.baseline_remove_24),
+                                contentDescription = "Icon",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    }
                 }
 
             }
 
         }
 
-
-
     }
+
+
+
+
 
     @Composable
     fun MySpacer(size: Int) {
